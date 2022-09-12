@@ -1,0 +1,16 @@
+---
+- name: Add user and key
+  hosts: localhost
+  become: true
+
+  tasks:
+
+    - name: Add User
+      ansible.builtin.user:
+        name: unprivileged
+
+    - name: Add Key
+      authorized_key:
+        user: unprivileged
+        key: "{{ lookup('file', '/home/ec2-user/unprivileged-key.pub') }}"
+        state: present
