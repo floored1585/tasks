@@ -1,4 +1,6 @@
 ---
+# The following ansible playbook will add a user, then add an
+# authorized_key for that user, using two built in modules.
 - name: Add user and key
   hosts: localhost
   become: true
